@@ -1,0 +1,10 @@
+package com.devtoolshub.repository;
+import com.devtoolshub.entity.ProgrammingLanguage;
+import org.springframework.data.jpa.repository.JpaRepository;
+import java.util.Optional;
+
+public interface ProgrammingLanguageRepository
+    extends  JpaRepository<ProgrammingLanguage, Long>{
+
+    Optional<ProgrammingLanguage> findByName(String name);
+}

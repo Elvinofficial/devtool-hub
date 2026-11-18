@@ -1,0 +1,75 @@
+.navigation-card {
+    transition: transform 0.25s ease,
+    box-shadow 0.25s ease;
+    cursor: pointer;
+    position: relative;
+}
+
+.navigation-card:hover {
+    transform: scale(1.035);
+    box-shadow: 0 14px 35px rgba(0, 0, 0, 0.14) !important;
+    z-index: 10;
+}
+
+.main-header {
+    width: 100%;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    padding-top: 28px;
+}
+
+.main-title {
+    font-size: clamp(32px, 3.5vw, 52px);
+    font-weight: 800;
+    letter-spacing: -1.5px;
+    color: #111827;
+    margin: 0;
+}
+
+.brand-gradient {
+    background: linear-gradient(90deg, #9333ea, #2563eb);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.main-subtitle {
+    font-size: 19px;
+    color: #6b7280;
+    margin: 0;
+}
+
+.dashboard-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+
+    width: 100%;
+    max-width: 1450px;
+    min-height: 76px;
+    box-sizing: border-box;
+
+    margin-top: 12px;
+    padding: 18px 32px;
+
+    background: linear-gradient(100deg, #9333ea, #2563eb);
+    color: white;
+
+    border-radius: 20px;
+    font-size: 22px;
+    font-weight: 700;
+
+    box-shadow: 0 8px 24px rgba(99, 102, 241, 0.20);
+
+    transition: transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.dashboard-button:hover {
+    transform: scale(1.015);
+    box-shadow: 0 14px 36px rgba(99, 102, 241, 0.35);
+}
