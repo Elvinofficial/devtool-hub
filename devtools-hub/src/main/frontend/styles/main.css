@@ -11,6 +11,12 @@
     z-index: 10;
 }
 
+.navigation-card:active {
+    transform: translateY(4px) scale(0.985);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12) !important;
+    transition-duration: 0.08s;
+}
+
 .main-header {
     width: 100%;
     text-align: center;
@@ -30,7 +36,7 @@
 }
 
 .brand-gradient {
-    background: linear-gradient(90deg, #9333ea, #2563eb);
+    background: linear-gradient(90deg, #ea3333, #eb8f25);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -56,7 +62,7 @@
     margin-top: 12px;
     padding: 18px 32px;
 
-    background: linear-gradient(100deg, #9333ea, #2563eb);
+    background: linear-gradient(100deg, #ea3333, #eb8f25);
     color: white;
 
     border-radius: 20px;
@@ -72,4 +78,48 @@
 .dashboard-button:hover {
     transform: scale(1.015);
     box-shadow: 0 14px 36px rgba(99, 102, 241, 0.35);
+}
+.dashboard-button:active {
+    transform: translateY(4px) scale(0.99);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+    transition-duration: 0.08s;
+}
+
+.action-button {
+    background: #1f9f4c;
+    color: white;
+    border-radius: 12px;
+    font-weight: 600;
+    padding: 12px 24px;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.action-button:hover {
+    transform: translateY(-2px);
+}
+
+.action-button:active {
+    transform: translateY(2px) scale(0.98);
+}
+
+.back-button {
+    background: #ffffff;
+    color: #374151;
+    border: 1px solid #d1d5db;
+    border-radius: 12px;
+    font-weight: 600;
+    cursor: pointer;
+
+    transition: transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.back-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 14px rgba(0, 0, 0, 0.12);
+}
+
+.back-button:active {
+    transform: translateY(2px) scale(0.97);
 }

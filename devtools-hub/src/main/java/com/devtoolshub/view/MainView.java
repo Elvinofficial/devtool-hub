@@ -1,4 +1,5 @@
 package com.devtoolshub.view;
+import com.vaadin.flow.component.UI;
 import com.vaadin.flow.component.dependency.CssImport;
 import com.vaadin.flow.component.html.*;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
@@ -53,32 +54,38 @@ public class MainView extends  VerticalLayout {
                 createNavigationCard(
                         "Проекты",
                         "Управление программными проектами",
-                        VaadinIcon.FOLDER_OPEN
+                        VaadinIcon.FOLDER_OPEN,
+                        ""
                 ),
                 createNavigationCard(
                         "Языки программирвоания",
                         "Справочник языков программирования",
-                        VaadinIcon.CODE
+                        VaadinIcon.CODE,
+                        "languages"
                 ),
                 createNavigationCard(
                         "Инструменты разработки",
                         "Управление инструментами разработки",
-                        VaadinIcon.TOOLS
+                        VaadinIcon.TOOLS,
+                        ""
                 ),
                 createNavigationCard(
                         "Разработчики",
                         "Управление разработчиками",
-                        VaadinIcon.USERS
+                        VaadinIcon.USERS,
+                        ""
                 ),
                 createNavigationCard(
                         "Операционные системы",
                         "Справочник операционных систем",
-                        VaadinIcon.DESKTOP
+                        VaadinIcon.DESKTOP,
+                        ""
                 ),
                 createNavigationCard(
                         "Категории инструментов",
                         "Управление категориями инструментов",
-                        VaadinIcon.TAGS
+                        VaadinIcon.TAGS,
+                        ""
                 )
         );
 
@@ -89,6 +96,7 @@ public class MainView extends  VerticalLayout {
 
         Icon dashboardIcon = VaadinIcon.CHART.create();
         dashboardIcon.setSize("26px");
+        dashboardIcon.setColor("#FFFFFF");
 
         Span dashboardText = new Span("Перейти к дашборду");
 
@@ -107,11 +115,12 @@ public class MainView extends  VerticalLayout {
     private VerticalLayout createNavigationCard(
             String title,
             String description,
-            VaadinIcon iconName
+            VaadinIcon iconName,
+            String route
     ){
         Icon icon = new Icon(iconName);
         icon.setSize("44px");
-        icon.getStyle().set("color", "#6366f1");
+        icon.getStyle().set("color", "#eb8f25");
 
         H3 cardTitle = new H3(title);
         Paragraph cardDescription = new Paragraph(description);
@@ -136,6 +145,11 @@ public class MainView extends  VerticalLayout {
                 .set("box-sizing", "border-box");
 
         card.addClassName("navigation-card");
+        if (route != null) {
+            card.addClickListener(event ->
+                    UI.getCurrent().navigate(route)
+            );
+        }
         return  card;
     }
 }
