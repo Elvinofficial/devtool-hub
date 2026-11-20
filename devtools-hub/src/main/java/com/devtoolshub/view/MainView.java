@@ -79,13 +79,13 @@ public class MainView extends  VerticalLayout {
                         "Операционные системы",
                         "Справочник операционных систем",
                         VaadinIcon.DESKTOP,
-                        ""
+                        "operating-systems"
                 ),
                 createNavigationCard(
                         "Категории инструментов",
                         "Управление категориями инструментов",
                         VaadinIcon.TAGS,
-                        ""
+                        "tool-categories"
                 )
         );
 
