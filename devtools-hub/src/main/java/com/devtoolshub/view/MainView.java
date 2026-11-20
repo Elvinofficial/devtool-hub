@@ -67,7 +67,7 @@ public class MainView extends  VerticalLayout {
                         "Инструменты разработки",
                         "Управление инструментами разработки",
                         VaadinIcon.TOOLS,
-                        ""
+                        "development-tools"
                 ),
                 createNavigationCard(
                         "Разработчики",

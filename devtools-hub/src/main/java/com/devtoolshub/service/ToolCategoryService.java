@@ -1,6 +1,7 @@
 package com.devtoolshub.service;
 
 import com.devtoolshub.entity.ToolCategory;
+import com.devtoolshub.repository.DevelopmentToolRepository;
 import com.devtoolshub.repository.ToolCategoryRepository;
 import com.devtoolshub.util.NameNormalizer;
 
@@ -13,9 +14,11 @@ import java.util.List;
 public class ToolCategoryService {
 
     private final ToolCategoryRepository repository;
+    private final DevelopmentToolRepository toolRepository;
 
-    public ToolCategoryService(ToolCategoryRepository repository) {
+    public ToolCategoryService(ToolCategoryRepository repository, DevelopmentToolRepository toolRepository) {
         this.repository = repository;
+        this.toolRepository = toolRepository;
     }
 
     @Transactional(readOnly = true)
@@ -59,14 +62,22 @@ public class ToolCategoryService {
         return repository.save(category);
     }
 
+
     @Transactional
     public void delete(Long id) {
-        if (!repository.existsById(id)) {
+        ToolCategory category = repository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException(
+                        "Категория не найдена"
+                ));
+
+        // Проверяет наличие инструментов в категории
+        if (toolRepository.existsByCategory(category)) {
             throw new IllegalArgumentException(
-                    "Категория не найдена"
+                    "Нельзя удалить категорию, поскольку к ней привязаны инструменты"
             );
         }
 
         repository.deleteById(id);
     }
+
 }

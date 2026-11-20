@@ -2,6 +2,7 @@
 package com.devtoolshub.service;
 
 import com.devtoolshub.entity.ToolCategory;
+import com.devtoolshub.repository.DevelopmentToolRepository;
 import com.devtoolshub.repository.ToolCategoryRepository;
 
 import org.junit.jupiter.api.BeforeEach;
@@ -17,13 +18,20 @@ import static org.mockito.Mockito.*;
 class ToolCategoryServiceTest {
 
     private ToolCategoryRepository repository;
+    private DevelopmentToolRepository toolRepository;
     private ToolCategoryService service;
 
     @BeforeEach
     void setUp() {
         repository = mock(ToolCategoryRepository.class);
-        service = new ToolCategoryService(repository);
+        toolRepository = mock(DevelopmentToolRepository.class);
+
+        service = new ToolCategoryService(
+                repository,
+                toolRepository
+        );
     }
+
 
     @Test
     void shouldCreateCategory() {
@@ -104,18 +112,25 @@ class ToolCategoryServiceTest {
         verify(repository).save(existing);
     }
 
+
     @Test
     void shouldDeleteCategory() {
         Long id = 1L;
+        ToolCategory category = new ToolCategory("IDE");
 
-        when(repository.existsById(id))
-                .thenReturn(true);
+        when(repository.findById(id))
+                .thenReturn(Optional.of(category));
+
+        when(toolRepository.existsByCategory(category))
+                .thenReturn(false);
 
         service.delete(id);
 
-        verify(repository).existsById(id);
+        verify(repository).findById(id);
+        verify(toolRepository).existsByCategory(category);
         verify(repository).deleteById(id);
     }
+
 
     @Test
     void shouldRejectEmptyName() {
@@ -176,4 +191,50 @@ class ToolCategoryServiceTest {
 
         verify(repository, never()).deleteById(any());
     }
+
+
+    // Проверяет запрет удаления категории с инструментами
+    @Test
+    void shouldRejectDeletingUsedCategory() {
+        Long id = 1L;
+        ToolCategory category = new ToolCategory("IDE");
+
+        when(repository.findById(id))
+                .thenReturn(Optional.of(category));
+
+        when(toolRepository.existsByCategory(category))
+                .thenReturn(true);
+
+        IllegalArgumentException exception = assertThrows(
+                IllegalArgumentException.class,
+                () -> service.delete(id)
+        );
+
+        assertEquals(
+                "Нельзя удалить категорию, поскольку к ней привязаны инструменты",
+                exception.getMessage()
+        );
+
+        verify(repository, never()).deleteById(id);
+    }
+
+
+    // Проверяет удаление категории без инструментов
+    @Test
+    void shouldDeleteUnusedCategory() {
+        Long id = 1L;
+        ToolCategory category = new ToolCategory("IDE");
+
+        when(repository.findById(id))
+                .thenReturn(Optional.of(category));
+
+        when(toolRepository.existsByCategory(category))
+                .thenReturn(false);
+
+        service.delete(id);
+
+        verify(repository).deleteById(id);
+    }
+
+
 }
