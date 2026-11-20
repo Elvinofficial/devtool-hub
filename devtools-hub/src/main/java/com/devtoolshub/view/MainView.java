@@ -55,7 +55,7 @@ public class MainView extends  VerticalLayout {
                         "Проекты",
                         "Управление программными проектами",
                         VaadinIcon.FOLDER_OPEN,
-                        ""
+                        "projects"
                 ),
                 createNavigationCard(
                         "Языки программирвоания",
@@ -73,7 +73,7 @@ public class MainView extends  VerticalLayout {
                         "Разработчики",
                         "Управление разработчиками",
                         VaadinIcon.USERS,
-                        ""
+                        "developers"
                 ),
                 createNavigationCard(
                         "Операционные системы",
@@ -93,6 +93,9 @@ public class MainView extends  VerticalLayout {
 
         Div dashboardButton = new Div();
         dashboardButton.addClassName("dashboard-button");
+        dashboardButton.addClickListener(
+                event -> UI.getCurrent().navigate("dashboard")
+        );
 
         Icon dashboardIcon = VaadinIcon.CHART.create();
         dashboardIcon.setSize("26px");

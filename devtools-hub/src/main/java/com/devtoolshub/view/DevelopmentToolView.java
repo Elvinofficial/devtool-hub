@@ -60,7 +60,6 @@ public class DevelopmentToolView extends VerticalLayout {
         H2 titleText = new H2("Инструменты разработки");
 
         Button backButton = new Button(
-                "На главную",
                 VaadinIcon.ARROW_LEFT.create(),
                 event -> UI.getCurrent().navigate("")
         );
@@ -96,7 +95,7 @@ public class DevelopmentToolView extends VerticalLayout {
 
         grid.addColumn(tool ->
                         tool.getVersion() == null
-                                ? ""
+                                ? "<Не указано>"
                                 : tool.getVersion()
                 )
                 .setHeader("Версия")
@@ -105,7 +104,7 @@ public class DevelopmentToolView extends VerticalLayout {
         // Отображает описание инструмента
         grid.addColumn(tool ->
                         tool.getDescription() == null
-                                ? ""
+                                ? "<Не указано>"
                                 : tool.getDescription()
                 )
                 .setHeader("Описание")
@@ -115,7 +114,7 @@ public class DevelopmentToolView extends VerticalLayout {
         // Отображает сайт инструмента
         grid.addColumn(tool ->
                         tool.getWebsiteUrl() == null
-                                ? ""
+                                ? "<Не указано>"
                                 : tool.getWebsiteUrl()
                 )
                 .setHeader("Сайт")

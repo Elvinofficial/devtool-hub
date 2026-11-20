@@ -123,6 +123,7 @@ public class DevelopmentToolService {
 
     // Удаляет лишние пробелы из необязательных полей
     private String normalizeOptional(String value) {
-        return value == null ? null : value.trim();
+        String result = value.trim();
+        return result.isEmpty() ? null : result;
     }
 }

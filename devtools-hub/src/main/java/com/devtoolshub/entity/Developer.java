@@ -28,9 +28,8 @@ public class Developer {
     protected Developer() {
     }
 
-    public Developer(String firstName, String lastName, String email) {
+    public Developer(String firstName, String email) {
         this.firstName = firstName;
-        this.lastName = lastName;
         this.email = email;
     }
 

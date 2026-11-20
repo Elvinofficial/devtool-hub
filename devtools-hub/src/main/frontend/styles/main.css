@@ -123,3 +123,202 @@
 .back-button:active {
     transform: translateY(2px) scale(0.97);
 }
+
+
+/* Адаптивная сетка проектов */
+.project-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 20px;
+    padding-top: 12px;
+}
+
+/* Карточка проекта */
+.project-card {
+    display: flex;
+    flex-direction: column;
+    min-height: 190px;
+    padding: 22px;
+    border: 1px solid #e5e7eb;
+    border-radius: 14px;
+    background: #ffffff;
+    cursor: pointer;
+    box-sizing: border-box;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.project-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+}
+
+/* Описание проекта */
+.project-description {
+    color: #6b7280;
+    line-height: 1.6;
+    overflow-wrap: anywhere;
+    white-space: pre-wrap;
+}
+
+/* Ссылка на подробную информацию */
+.project-details-link {
+    margin-top: auto;
+    padding-top: 14px;
+    color: #eb8f25;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+/* Средние экраны */
+@media (max-width: 1000px) {
+    .project-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+/* Узкие экраны */
+@media (max-width: 650px) {
+    .project-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+/* Основная информация о проекте */
+.project-info-card {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    width: 100%;
+    padding: 28px;
+    box-sizing: border-box;
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 14px;
+}
+
+/* Описание проекта */
+.project-info-description {
+    margin: 0;
+    color: #6b7280;
+    line-height: 1.7;
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+}
+
+
+/* Раздел подробной информации о проекте */
+.project-section-card {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+    padding: 24px 28px;
+    box-sizing: border-box;
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 14px;
+}
+
+/* Список привязанных элементов */
+.project-tag-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+/* Элемент связанного справочника */
+.project-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 5px 8px 5px 14px;
+    border-radius: 8px;
+    background: #f3f4f6;
+    color: #374151;
+    font-size: 14px;
+}
+
+/* Кнопка отвязки */
+.project-tag-remove {
+    width: 24px;
+    height: 24px;
+    min-width: 24px;
+    padding: 0;
+    border: none;
+    border-radius: 6px;
+    background: transparent;
+    color: #6b7280;
+    cursor: pointer;
+}
+
+.project-tag-remove:hover {
+    background: #fee2e2;
+    color: #dc2626;
+}
+
+
+/* Сетка карточек статистики */
+.dashboard-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 20px;
+    width: 100%;
+    max-width: 1200px;
+}
+
+/* Карточка статистики */
+.dashboard-stat-card {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 12px;
+
+    min-height: 150px;
+    padding: 24px 28px;
+    box-sizing: border-box;
+
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 14px;
+
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.dashboard-stat-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.07);
+}
+
+.dashboard-stat-icon {
+    color: #eb8f25;
+    width: 26px;
+    height: 26px;
+}
+
+.dashboard-stat-value {
+    font-size: 36px;
+    font-weight: 700;
+    color: #111827;
+    line-height: 1.1;
+}
+
+.dashboard-stat-title {
+    margin: 0;
+    font-size: 15px;
+    font-weight: 500;
+    color: #6b7280;
+}
+
+@media (max-width: 900px) {
+    .dashboard-stats-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 600px) {
+    .dashboard-stats-grid {
+        grid-template-columns: 1fr;
+    }
+}
